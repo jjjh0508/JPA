@@ -204,12 +204,17 @@ public class A_EntityLifeCycleTests {
     @Test
     void 병합_merge_삽입_테스트() {
         Menu menuToDetach = entityManager.find(Menu.class, 2);
+        //준 영속
         entityManager.detach(menuToDetach);
-
+        //바꿔주고
         menuToDetach.setMenuCode(999);
-        menuToDetach.setMenuName("수박죽");
-        entityManager.merge(menuToDetach);
 
+        menuToDetach.setMenuName("수박죽");
+
+        // 999이기 때문에 병합 대상이 없음 그럼 삽입됨
+        entityManager.merge(menuToDetach);
+        //DB에 인설트 됨
+        //근데 커밋 안해서 컨텍스트에 있는 값 가져옴 ? 그래서 다른 해시코드
 
         Menu merMenu = entityManager.find(Menu.class, 999);
         Assertions.assertEquals("수박죽",merMenu.getMenuName());
