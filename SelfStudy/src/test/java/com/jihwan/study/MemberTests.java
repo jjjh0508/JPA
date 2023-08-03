@@ -1,6 +1,8 @@
 package com.jihwan.study;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Order;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,7 +10,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.Date;
 
-public class StudyTests {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class MemberTests {
 
     private static EntityManagerFactory managerFactory;
     private EntityManager entityManager;
@@ -38,8 +41,9 @@ public class StudyTests {
 
 
     @Test
-    @DisplayName("회원 테이블 등록및 테스트")
-    void memberRegist() {
+    @Order(1)
+//    @DisplayName("회원 테이블 등록및 테스트")
+    void 회원_생성_테스트() {
         //given
         Member member = new Member();
         member.setName("전지환");
@@ -63,9 +67,35 @@ public class StudyTests {
             e.printStackTrace();
         }
         //then
-        Member findMember = entityManager.find(Member.class,1);
-        Assertions.assertEquals(member.getMemberNo(),findMember.getMemberNo());
+        Member findMember = entityManager.find(Member.class, 1);
+        Assertions.assertEquals(member.getMemberNo(), findMember.getMemberNo());
 
+    }
+
+
+    @Test
+    @Order(2)
+    void 회원_조회_테스트() {
+        Member findMember = entityManager.find(Member.class, 1);
+
+
+        Assertions.assertNotNull(findMember);
+    }
+
+    @Test
+    @Order(3)
+    void 회원_삭제_테스트() {
+        //given
+        Member Member = entityManager.find(Member.class, 1);
+        //when
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        entityManager.remove(Member);
+        entityTransaction.commit();
+        //then
+        Member findMember = entityManager.find(Member.class, 1);
+
+        Assertions.assertNull(findMember);
     }
 
 }
