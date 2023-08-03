@@ -7,7 +7,9 @@
 <!--        <class>com.jihwan.section03.primarykey.tables.Member</class>-->
 <!--        <class>com.jihwan.section04.enumtype.Member</class>-->
 <!--        <class>com.jihwan.section05.access.subsection01.filed.Member</class>-->
-        <class>com.jihwan.section05.access.subsection02.property.Member</class>
+<!--        <class>com.jihwan.section05.access.subsection02.property.Member</class>-->
+<!--        <class>com.jihwan.section06.compositekey.subsection01.embadded.Member</class>-->
+        <class>com.jihwan.section06.compositekey.subsection02.idclass.Member</class>
         <properties>
             <!--DB Connection의 관련된 설정-->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
