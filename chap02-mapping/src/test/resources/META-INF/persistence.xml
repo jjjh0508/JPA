@@ -4,7 +4,8 @@
 <!--        <class>com.jihwan.section01.entity.Member</class>-->
 <!--        <class>com.jihwan.section02.column.Member</class>-->
 <!--        <class>com.jihwan.section03.primarykey.identity.Member</class>-->
-        <class>com.jihwan.section03.primarykey.tables.Member</class>
+<!--        <class>com.jihwan.section03.primarykey.tables.Member</class>-->
+        <class>com.jihwan.section04.enumtype.Member</class>
         <properties>
             <!--DB Connection의 관련된 설정-->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
