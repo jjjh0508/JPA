@@ -14,7 +14,6 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'org.hibernate:hibernate-entitymanager:5.6.15.Final'
     implementation 'com.mysql:mysql-connector-j:8.0.33'
-
 }
 
 test {
