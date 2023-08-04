@@ -1,10 +1,16 @@
-package com.jihwan.section01.manytoone;
+package com.jihwan.section02.onetomany;
 
-import javax.persistence.*;
 
-@Entity(name = "menu_and_category")
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name = "menu")
 @Table(name = "tbl_menu")
-public class MenuAndCategory {
+
+public class Menu {
+
 
     @Id
     @Column(name = "menu_code")
@@ -14,23 +20,22 @@ public class MenuAndCategory {
     private String menuName;
 
     @Column(name = "menu_price")
-    private int menuPrice;
+    private int menuPrince;
 
-    @JoinColumn(name = "category_code") // fk 참조함
-    @ManyToOne(cascade = CascadeType.PERSIST) //영속성 전이 PERIST= 동일시 시킨다
-    private Category category;
+    @Column(name = "category_code")
+    private int categoryCode;
 
     @Column(name = "orderable_status")
     private String orderableStatus;
 
-    public MenuAndCategory() {
+    public Menu() {
     }
 
-    public MenuAndCategory(int menuCode, String menuName, int menuPrice, Category category, String orderableStatus) {
+    public Menu(int menuCode, String menuName, int menuPrince, int categoryCode, String orderableStatus) {
         this.menuCode = menuCode;
         this.menuName = menuName;
-        this.menuPrice = menuPrice;
-        this.category = category;
+        this.menuPrince = menuPrince;
+        this.categoryCode = categoryCode;
         this.orderableStatus = orderableStatus;
     }
 
@@ -50,20 +55,20 @@ public class MenuAndCategory {
         this.menuName = menuName;
     }
 
-    public int getMenuPrice() {
-        return menuPrice;
+    public int getMenuPrince() {
+        return menuPrince;
     }
 
-    public void setMenuPrice(int menuPrice) {
-        this.menuPrice = menuPrice;
+    public void setMenuPrince(int menuPrince) {
+        this.menuPrince = menuPrince;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getCategoryCode() {
+        return categoryCode;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryCode(int categoryCode) {
+        this.categoryCode = categoryCode;
     }
 
     public String getOrderableStatus() {
@@ -76,11 +81,11 @@ public class MenuAndCategory {
 
     @Override
     public String toString() {
-        return "MenuAndCategory{" +
+        return "Menu{" +
                 "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
-                ", menuPrice=" + menuPrice +
-                ", category=" + category +
+                ", menuPrince=" + menuPrince +
+                ", categoryCode=" + categoryCode +
                 ", orderableStatus='" + orderableStatus + '\'' +
                 '}';
     }
