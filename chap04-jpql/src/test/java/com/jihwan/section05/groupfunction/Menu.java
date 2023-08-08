@@ -1,11 +1,14 @@
-package com.jihwan.section03.projection;
+package com.jihwan.section05.groupfunction;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
-
-@Entity(name = "bidirection_menu")
+@Entity(name = "menu_section05")
 @Table(name = "tbl_menu")
-public class BiDriectionMenu {
+public class Menu {
+
     @Id
     @Column(name = "menu_code")
     private int menuCode;
@@ -16,21 +19,20 @@ public class BiDriectionMenu {
     @Column(name = "menu_price")
     private int menuPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "category_code")
-    private BiDriectionCategory category;
+    @Column(name = "category_code")
+    private int categoryCode;
 
     @Column(name = "orderable_status")
     private String orderableStatus;
 
-    public BiDriectionMenu() {
+    public Menu() {
     }
 
-    public BiDriectionMenu(int menuCode, String menuName, int menuPrice, BiDriectionCategory category, String orderableStatus) {
+    public Menu(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
         this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
-        this.category = category;
+        this.categoryCode = categoryCode;
         this.orderableStatus = orderableStatus;
     }
 
@@ -58,12 +60,12 @@ public class BiDriectionMenu {
         this.menuPrice = menuPrice;
     }
 
-    public BiDriectionCategory getCategory() {
-        return category;
+    public int getCategoryCode() {
+        return categoryCode;
     }
 
-    public void setCategory(BiDriectionCategory category) {
-        this.category = category;
+    public void setCategoryCode(int categoryCode) {
+        this.categoryCode = categoryCode;
     }
 
     public String getOrderableStatus() {
@@ -76,12 +78,12 @@ public class BiDriectionMenu {
 
     @Override
     public String toString() {
-        return "BiDriectionMenu{" +
+        return "Menu{" +
                 "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +
-                ", category=" + category +
-                ", orderableStatus='" + orderableStatus + '\'' +
+                ", categoryCode=" + categoryCode +
+                ", orderableStatus=" + orderableStatus +
                 '}';
     }
 }

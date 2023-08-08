@@ -1,11 +1,11 @@
-package com.jihwan.section03.projection;
-
+package com.jihwan.section07;
 
 import javax.persistence.*;
 
-@Entity(name = "bidirection_menu")
+@Entity(name = "menu_section07")
 @Table(name = "tbl_menu")
-public class BiDriectionMenu {
+public class Menu {
+
     @Id
     @Column(name = "menu_code")
     private int menuCode;
@@ -16,17 +16,17 @@ public class BiDriectionMenu {
     @Column(name = "menu_price")
     private int menuPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "category_code")
-    private BiDriectionCategory category;
+
+    @Column(name = "category_code")
+    private int category;
 
     @Column(name = "orderable_status")
     private String orderableStatus;
 
-    public BiDriectionMenu() {
+    public Menu() {
     }
 
-    public BiDriectionMenu(int menuCode, String menuName, int menuPrice, BiDriectionCategory category, String orderableStatus) {
+    public Menu(int menuCode, String menuName, int menuPrice, int category, String orderableStatus) {
         this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
@@ -58,11 +58,11 @@ public class BiDriectionMenu {
         this.menuPrice = menuPrice;
     }
 
-    public BiDriectionCategory getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(BiDriectionCategory category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 
@@ -76,7 +76,7 @@ public class BiDriectionMenu {
 
     @Override
     public String toString() {
-        return "BiDriectionMenu{" +
+        return "Menu{" +
                 "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +
